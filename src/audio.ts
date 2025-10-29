@@ -1,14 +1,16 @@
 import * as path from 'node:path';
 import * as fs from 'node:fs';
-import { exec } from 'node:child_process';
+import player from 'play-sound';
 
 export class AudioManager {
     private audioFiles: string[] = [];
     private lastPlayedFile: string | undefined;
     private readonly audioDir: string;
+    private readonly audioPlayer: ReturnType<typeof player>;
 
     constructor(extensionPath: string) {
         this.audioDir = path.join(extensionPath, 'audio');
+        this.audioPlayer = player({});
         this.loadAudioFiles();
     }
 
@@ -52,10 +54,10 @@ export class AudioManager {
         
         console.log(`Playing audio file: ${selectedFile}`);
         
-        // Play audio file on macOS
-        exec(`afplay "${audioPath}"`, (error) => {
-            if (error) {
-                console.error('Error playing sound:', error);
+        // Play audio file using play-sound (cross-platform)
+        this.audioPlayer.play(audioPath, (err: Error | null) => {
+            if (err) {
+                console.error('Error playing sound:', err);
             } else {
                 console.log('Sound played!');
             }

@@ -3,6 +3,12 @@
   "displayName": "VS Cold",
   "description": "A VS Code extension that is sick!",
   "version": "0.0.1",
+  "publisher": "dnsmob",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnsmob/vscold-extension"
+  },
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -30,11 +36,13 @@
         "vscold.enabled": {
           "type": "boolean",
           "default": true,
+          "title": "Enabled",
           "description": "Enable or disable VS Cold timer and sounds"
         },
         "vscold.severity": {
           "type": "string",
           "default": "sniffles",
+          "title": "Severity",
           "enum": [
             "sniffles",
             "flu",
