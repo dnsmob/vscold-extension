@@ -2,7 +2,7 @@
   "name": "vscold",
   "displayName": "VS Cold",
   "description": "A VS Code extension that is sick!",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.105.0"
   },
